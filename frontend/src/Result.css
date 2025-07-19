@@ -1,0 +1,467 @@
+/* Random shaking animation for decorative elements */
+@keyframes randomShake1 {
+  0% { transform: translateX(0) translateY(0) rotate(0deg); }
+  10% { transform: translateX(-3px) translateY(-2px) rotate(1deg); }
+  20% { transform: translateX(2px) translateY(-3px) rotate(-0.5deg); }
+  30% { transform: translateX(-1px) translateY(3px) rotate(1.5deg); }
+  40% { transform: translateX(3px) translateY(1px) rotate(-1deg); }
+  50% { transform: translateX(-2px) translateY(-1px) rotate(0.5deg); }
+  60% { transform: translateX(1px) translateY(2px) rotate(-1.5deg); }
+  70% { transform: translateX(-3px) translateY(-2px) rotate(1deg); }
+  80% { transform: translateX(2px) translateY(-1px) rotate(-0.5deg); }
+  90% { transform: translateX(-1px) translateY(3px) rotate(1.2deg); }
+  100% { transform: translateX(0) translateY(0) rotate(0deg); }
+}
+
+@keyframes randomShake2 {
+  0% { transform: translateX(0) translateY(0) rotate(0deg); }
+  15% { transform: translateX(2px) translateY(-3px) rotate(-1deg); }
+  25% { transform: translateX(-3px) translateY(1px) rotate(1.5deg); }
+  35% { transform: translateX(1px) translateY(3px) rotate(-0.5deg); }
+  45% { transform: translateX(-2px) translateY(-2px) rotate(1.2deg); }
+  55% { transform: translateX(3px) translateY(-1px) rotate(-1.5deg); }
+  65% { transform: translateX(-1px) translateY(2px) rotate(0.8deg); }
+  75% { transform: translateX(2px) translateY(-3px) rotate(-1deg); }
+  85% { transform: translateX(-3px) translateY(1px) rotate(1.3deg); }
+  95% { transform: translateX(1px) translateY(-1px) rotate(-0.7deg); }
+  100% { transform: translateX(0) translateY(0) rotate(0deg); }
+}
+
+@keyframes randomShake3 {
+  0% { transform: translateX(0) translateY(0) rotate(0deg); }
+  12% { transform: translateX(-2px) translateY(3px) rotate(1.5deg); }
+  24% { transform: translateX(3px) translateY(-1px) rotate(-1.2deg); }
+  36% { transform: translateX(-1px) translateY(-3px) rotate(0.8deg); }
+  48% { transform: translateX(2px) translateY(2px) rotate(-1.5deg); }
+  60% { transform: translateX(-3px) translateY(-2px) rotate(1.1deg); }
+  72% { transform: translateX(1px) translateY(3px) rotate(-0.9deg); }
+  84% { transform: translateX(-2px) translateY(-1px) rotate(1.4deg); }
+  96% { transform: translateX(3px) translateY(2px) rotate(-1.1deg); }
+  100% { transform: translateX(0) translateY(0) rotate(0deg); }
+}
+
+@keyframes randomShake4 {
+  0% { transform: translateX(0) translateY(0) rotate(0deg); }
+  8% { transform: translateX(3px) translateY(-2px) rotate(-1.3deg); }
+  16% { transform: translateX(-1px) translateY(3px) rotate(1.2deg); }
+  24% { transform: translateX(2px) translateY(-3px) rotate(-0.8deg); }
+  32% { transform: translateX(-3px) translateY(1px) rotate(1.5deg); }
+  40% { transform: translateX(1px) translateY(-2px) rotate(-1.1deg); }
+  48% { transform: translateX(-2px) translateY(3px) rotate(0.9deg); }
+  56% { transform: translateX(3px) translateY(-1px) rotate(-1.4deg); }
+  64% { transform: translateX(-1px) translateY(2px) rotate(1.3deg); }
+  72% { transform: translateX(2px) translateY(-3px) rotate(-0.7deg); }
+  80% { transform: translateX(-3px) translateY(1px) rotate(1.1deg); }
+  88% { transform: translateX(1px) translateY(-2px) rotate(-1.2deg); }
+  96% { transform: translateX(-2px) translateY(2px) rotate(0.8deg); }
+  100% { transform: translateX(0) translateY(0) rotate(0deg); }
+}
+
+@keyframes randomShake5 {
+  0% { transform: translateX(0) translateY(0) rotate(0deg); }
+  18% { transform: translateX(-2px) translateY(2px) rotate(-1.2deg); }
+  28% { transform: translateX(3px) translateY(-2px) rotate(1.4deg); }
+  38% { transform: translateX(-1px) translateY(-3px) rotate(-0.8deg); }
+  48% { transform: translateX(2px) translateY(3px) rotate(1.1deg); }
+  58% { transform: translateX(-3px) translateY(1px) rotate(-1.5deg); }
+  68% { transform: translateX(1px) translateY(-2px) rotate(0.9deg); }
+  78% { transform: translateX(-2px) translateY(2px) rotate(-1.3deg); }
+  88% { transform: translateX(3px) translateY(-1px) rotate(1.2deg); }
+  98% { transform: translateX(-1px) translateY(3px) rotate(-0.7deg); }
+  100% { transform: translateX(0) translateY(0) rotate(0deg); }
+}
+
+@keyframes randomShake6 {
+  0% { transform: translateX(0) translateY(0) rotate(0deg); }
+  22% { transform: translateX(3px) translateY(1px) rotate(1.3deg); }
+  32% { transform: translateX(-1px) translateY(-2px) rotate(-1.1deg); }
+  42% { transform: translateX(2px) translateY(3px) rotate(0.8deg); }
+  52% { transform: translateX(-3px) translateY(-1px) rotate(-1.4deg); }
+  62% { transform: translateX(1px) translateY(2px) rotate(1.2deg); }
+  72% { transform: translateX(-2px) translateY(-3px) rotate(-0.9deg); }
+  82% { transform: translateX(3px) translateY(1px) rotate(1.5deg); }
+  92% { transform: translateX(-1px) translateY(-2px) rotate(-1.1deg); }
+  100% { transform: translateX(0) translateY(0) rotate(0deg); }
+}
+
+/* Decorative floating X and O elements */
+.decorative-x, .decorative-o {
+  position: absolute;
+  width: 80px;
+  opacity: 0.1;
+  font-family: 'Annie Use Your Telescope', Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  color: white;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  text-align: center;
+  line-height: 1;
+  letter-spacing: 0;
+  user-select: none;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.decorative-x-1 { 
+  top: 6vh; 
+  left: 2vw; 
+  animation: randomShake1 5.2s ease-in-out infinite;
+}
+.decorative-o-1 { 
+  top: 18vh; 
+  right: 1vw; 
+  animation: randomShake2 4.8s ease-in-out infinite;
+}
+.decorative-x-2 { 
+  top: 32vh; 
+  left: 90vw; 
+  animation: randomShake3 5.5s ease-in-out infinite;
+}
+.decorative-o-2 { 
+  top: 46vh; 
+  left: 4vw; 
+  animation: randomShake4 4.3s ease-in-out infinite;
+}
+.decorative-x-3 { 
+  top: 58vh; 
+  right: 2vw; 
+  animation: randomShake1 4.7s ease-in-out infinite;
+}
+.decorative-o-3 { 
+  top: 72vh; 
+  left: 88vw; 
+  animation: randomShake2 5.9s ease-in-out infinite;
+}
+.decorative-x-4 { 
+  top: 85vh; 
+  left: 8vw; 
+  animation: randomShake3 4.2s ease-in-out infinite;
+}
+.decorative-o-4 { 
+  top: 93vh; 
+  right: 15vw; 
+  animation: randomShake4 5.8s ease-in-out infinite;
+}
+.decorative-x-5 { 
+  top: 24vh; 
+  left: 42vw; 
+  animation: randomShake5 5.1s ease-in-out infinite;
+}
+.decorative-o-5 { 
+  top: 10vh; 
+  left: 68vw; 
+  animation: randomShake6 4.6s ease-in-out infinite;
+}
+.decorative-x-6 { 
+  top: 52vh; 
+  left: 22vw; 
+  animation: randomShake1 5.3s ease-in-out infinite;
+}
+.decorative-o-6 { 
+  top: 78vh; 
+  right: 32vw; 
+  animation: randomShake2 4.9s ease-in-out infinite;
+}
+.decorative-x-7 { 
+  top: 96vh; 
+  left: 58vw; 
+  animation: randomShake3 4.1s ease-in-out infinite;
+}
+.decorative-o-7 { 
+  top: 4vh; 
+  left: 28vw; 
+  animation: randomShake4 5.7s ease-in-out infinite;
+}
+.decorative-x-8 { 
+  top: 38vh; 
+  left: 82vw; 
+  animation: randomShake5 4.8s ease-in-out infinite;
+}
+.decorative-o-8 { 
+  top: 64vh; 
+  left: 35vw; 
+  animation: randomShake6 5.4s ease-in-out infinite;
+}
+.decorative-x-9 { 
+  top: 16vh; 
+  right: 22vw; 
+  animation: randomShake1 4.4s ease-in-out infinite;
+}
+.decorative-o-9 { 
+  top: 88vh; 
+  right: 48vw; 
+  animation: randomShake2 5.6s ease-in-out infinite;
+}
+.decorative-x-10 { 
+  top: 42vh; 
+  right: 42vw; 
+  animation: randomShake3 5.0s ease-in-out infinite;
+}
+.decorative-o-10 { 
+  top: 98vh; 
+  left: 78vw; 
+  animation: randomShake4 4.5s ease-in-out infinite;
+}
+
+/* Ensure decorative elements are properly positioned for Result page */
+.container .decorative-x, 
+.container .decorative-o {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.1 !important;
+  transition: none !important;
+}
+
+.container .decorative-x:hover, 
+.container .decorative-o:hover {
+  opacity: 0.1 !important;
+}
+
+/* Desktop optimized styles */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.main-card {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  min-height: auto;
+  background: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.result-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  color: white;
+  padding: 4rem 2rem;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  gap: 2rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+body {
+  font-family: 'Annie Use Your Telescope', Helvetica, Arial, sans-serif;
+  background: linear-gradient(135deg, rgba(102,126,234,1) 0%, rgba(118,75,162,1) 100%);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.result-emoji {
+  font-size: clamp(4rem, 8vw, 5.5rem);
+  margin-bottom: 1rem;
+  animation: bounce 2.5s infinite;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.25));
+}
+
+.result-emoji.celebrate {
+  animation: celebrate 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes celebrate {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(-10deg) scale(1.1);
+  }
+  50% {
+    transform: rotate(10deg) scale(1.2);
+  }
+  75% {
+    transform: rotate(-5deg) scale(1.1);
+  }
+}
+
+.result-title {
+  font-size: clamp(2.2rem, 6vw, 3.2rem);
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.result-subtitle {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.game-id {
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  opacity: 0.7;
+  margin-bottom: 3rem;
+  font-family: monospace;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem 2rem;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 350px;
+}
+
+/* Button container */
+.result-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.button-container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 600px;
+  margin-top: 1rem;
+}
+
+.result-button {
+  padding: 1.2rem 2.5rem;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-family: 'Annie Use Your Telescope', Helvetica, Arial, sans-serif;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  min-width: 160px;
+}
+
+.result-button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.result-button:active {
+  transform: translateY(0);
+}
+
+/* Base button styles */
+.play-again-btn,
+.go-home-btn {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Annie Use Your Telescope', Helvetica, Arial, sans-serif;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 140px;
+  justify-content: center;
+}
+
+/* Play Again button */
+.play-again-btn {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.play-again-btn:hover {
+  background: linear-gradient(135deg, #45a049, #3d8b40);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+/* Go Home button */
+.go-home-btn {
+  background: linear-gradient(135deg, #2196F3, #1976D2);
+  color: white;
+  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+}
+
+.go-home-btn:hover {
+  background: linear-gradient(135deg, #1976D2, #1565C0);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+}
+
+/* Button active states */
+.play-again-btn:active,
+.go-home-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.play-again {
+  background: rgba(76, 175, 80, 0.3);
+  border-color: #4CAF50;
+}
+
+.play-again:hover {
+  background: rgba(76, 175, 80, 0.5);
+}
+
+.go-home {
+  background: rgba(0, 140, 186, 0.3);
+  border-color: #008CBA;
+}
+
+.go-home:hover {
+  background: rgba(0, 140, 186, 0.5);
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .result-actions {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .play-again-btn,
+  .go-home-btn {
+    width: 100%;
+    max-width: 250px;
+  }
+}

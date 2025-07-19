@@ -1,0 +1,57 @@
+# Python virtualenv
+.env
+.env.*
+*.env
+*.env.local
+*.env.*.local
+
+# PyInstaller
+*.spec
+
+# Test/coverage
+coverage/
+htmlcov/
+.cache/
+.tox/
+.nox/
+.pytest_cache/
+junit*.xml
+*.cover
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+
+# Frontend build tools
+.cache/
+.eslintcache
+.next/          # For Next.js
+.out/           # Sometimes used by static generators
+.svelte-kit/    # If using SvelteKit
+build/
+
+# System Files
+Thumbs.db
+ehthumbs.db
+*.bak
+*.orig
+*.tmp
+
+# Logs (already covered)
+*.log
+
+# macOS
+.AppleDouble
+.LSOverride
+
+# Windows
+Desktop.ini
+
+# TypeScript
+*.tsbuildinfo
+
+# Yarn / npm / pnpm lock files — optional if using only one
+# Only ignore if you're not committing lock files
+# yarn.lock
+# package-lock.json
+# pnpm-lock.yaml

@@ -1,0 +1,1434 @@
+/* Import Google Font */
+@import url("https://fonts.googleapis.com/css?family=Annie+Use+Your+Telescope:400");
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Annie Use Your Telescope', Helvetica, Arial, sans-serif;
+  background: linear-gradient(135deg, rgba(102,126,234,1) 0%, rgba(118,75,162,1) 100%);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Main Card */
+.main-card {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  min-height: auto;
+  background: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Title */
+.title-container {
+  width: 100%;
+  padding: 0 20px;
+  z-index: 10;
+  margin-bottom: 2rem;
+}
+
+.main-title {
+  width: 100%;
+  opacity: 0.95;
+  font-family: 'Annie Use Your Telescope', Helvetica;
+  font-weight: normal;
+  color: white;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  text-align: center;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 1rem;
+}
+
+/* Base styles for all decorative elements */
+.decorative-x, .decorative-o {
+  position: absolute;
+  width: 8vw;
+  max-width: 114px;
+  opacity: 0.1;
+  font-family: 'Arial', Helvetica;
+  font-weight: normal;
+  color: white;
+  font-size: clamp(2rem, 6vw, 5rem);
+  text-align: center;
+  line-height: normal;
+  letter-spacing: 0;
+  user-select: none;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Anti-hover/fade CSS for decorative elements */
+.decorative-x:hover, .decorative-o:hover {
+  opacity: 0.1 !important;
+  transform: none !important;
+}
+
+.decorative-x, .decorative-o {
+  transition: none !important;
+}
+
+/* Unique game page shaking animations - Different from Home */
+@keyframes gameShake1 {
+  0% { transform: translateX(0) translateY(0) rotate(0deg); }
+  15% { transform: translateX(-4px) translateY(-1px) rotate(1.5deg); }
+  30% { transform: translateX(3px) translateY(-4px) rotate(-0.8deg); }
+  45% { transform: translateX(-2px) translateY(4px) rotate(2deg); }
+  60% { transform: translateX(4px) translateY(2px) rotate(-1.2deg); }
+  75% { transform: translateX(-3px) translateY(-2px) rotate(0.7deg); }
+  90% { transform: translateX(2px) translateY(3px) rotate(-1.8deg); }
+  100% { transform: translateX(0) translateY(0) rotate(0deg); }
+}
+
+@keyframes gameShake2 {
+  0% { transform: translateX(0) translateY(0) rotate(0deg); }
+  12% { transform: translateX(3px) translateY(-4px) rotate(-1.3deg); }
+  24% { transform: translateX(-4px) translateY(2px) rotate(1.7deg); }
+  36% { transform: translateX(2px) translateY(4px) rotate(-0.9deg); }
+  48% { transform: translateX(-3px) translateY(-3px) rotate(1.4deg); }
+  60% { transform: translateX(4px) translateY(-1px) rotate(-1.6deg); }
+  72% { transform: translateX(-2px) translateY(3px) rotate(1.1deg); }
+  84% { transform: translateX(3px) translateY(-2px) rotate(-1.5deg); }
+  96% { transform: translateX(-1px) translateY(4px) rotate(0.8deg); }
+  100% { transform: translateX(0) translateY(0) rotate(0deg); }
+}
+
+@keyframes gameShake3 {
+  0% { transform: translateX(0) translateY(0) rotate(0deg); }
+  20% { transform: translateX(-3px) translateY(4px) rotate(1.8deg); }
+  40% { transform: translateX(4px) translateY(-2px) rotate(-1.4deg); }
+  60% { transform: translateX(-2px) translateY(-4px) rotate(1.1deg); }
+  80% { transform: translateX(3px) translateY(3px) rotate(-1.7deg); }
+  100% { transform: translateX(0) translateY(0) rotate(0deg); }
+}
+
+@keyframes gameShake4 {
+  0% { transform: translateX(0) translateY(0) rotate(0deg); }
+  10% { transform: translateX(4px) translateY(-3px) rotate(-1.6deg); }
+  20% { transform: translateX(-2px) translateY(4px) rotate(1.3deg); }
+  30% { transform: translateX(3px) translateY(-4px) rotate(-1.0deg); }
+  40% { transform: translateX(-4px) translateY(2px) rotate(1.8deg); }
+  50% { transform: translateX(2px) translateY(-3px) rotate(-1.4deg); }
+  60% { transform: translateX(-3px) translateY(4px) rotate(1.2deg); }
+  70% { transform: translateX(4px) translateY(-2px) rotate(-1.7deg); }
+  80% { transform: translateX(-2px) translateY(3px) rotate(1.5deg); }
+  90% { transform: translateX(3px) translateY(-4px) rotate(-0.9deg); }
+  100% { transform: translateX(0) translateY(0) rotate(0deg); }
+}
+
+@keyframes gameShake5 {
+  0% { transform: translateX(0) translateY(0) rotate(0deg); }
+  25% { transform: translateX(-3px) translateY(3px) rotate(-1.5deg); }
+  50% { transform: translateX(4px) translateY(-3px) rotate(1.8deg); }
+  75% { transform: translateX(-2px) translateY(-4px) rotate(-1.2deg); }
+  100% { transform: translateX(0) translateY(0) rotate(0deg); }
+}
+
+@keyframes gameShake6 {
+  0% { transform: translateX(0) translateY(0) rotate(0deg); }
+  16% { transform: translateX(4px) translateY(2px) rotate(1.6deg); }
+  32% { transform: translateX(-2px) translateY(-3px) rotate(-1.3deg); }
+  48% { transform: translateX(3px) translateY(4px) rotate(1.0deg); }
+  64% { transform: translateX(-4px) translateY(-2px) rotate(-1.8deg); }
+  80% { transform: translateX(2px) translateY(3px) rotate(1.4deg); }
+  96% { transform: translateX(-3px) translateY(-4px) rotate(-1.1deg); }
+  100% { transform: translateX(0) translateY(0) rotate(0deg); }
+}
+
+/* Decorative Elements - Reduced size */
+.decorative-x, .decorative-o {
+  position: absolute;
+  width: 80px;
+  opacity: 0.08;
+  font-family: 'Arial', Helvetica, sans-serif;
+  font-weight: bold;
+  color: white;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  text-align: center;
+  line-height: 1;
+  letter-spacing: 0;
+  user-select: none;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.decorative-x-1 { 
+  top: 12vh; 
+  left: 8vw; 
+  animation: gameShake1 3.2s ease-in-out infinite;
+}
+.decorative-o-1 { 
+  top: 18vh; 
+  right: 15vw; 
+  animation: gameShake2 4.1s ease-in-out infinite;
+}
+.decorative-x-2 { 
+  top: 75vh; 
+  left: 12vw; 
+  animation: gameShake3 3.7s ease-in-out infinite;
+}
+.decorative-o-2 { 
+  top: 35vh; 
+  right: 8vw; 
+  animation: gameShake4 4.3s ease-in-out infinite;
+}
+.decorative-x-3 { 
+  top: 45vh; 
+  left: 5vw; 
+  animation: gameShake5 3.9s ease-in-out infinite;
+}
+.decorative-o-3 { 
+  top: 85vh; 
+  right: 22vw; 
+  animation: gameShake6 4.5s ease-in-out infinite;
+}
+.decorative-x-4 { 
+  top: 55vh; 
+  left: 18vw; 
+  animation: gameShake1 3.4s ease-in-out infinite;
+}
+.decorative-o-4 { 
+  top: 65vh; 
+  right: 12vw; 
+  animation: gameShake2 4.0s ease-in-out infinite;
+}
+.decorative-x-5 { 
+  top: 65vh; 
+  left: 25vw; 
+  animation: gameShake3 3.6s ease-in-out infinite;
+}
+.decorative-o-5 { 
+  top: 25vh; 
+  left: 35vw; 
+  animation: gameShake4 4.2s ease-in-out infinite;
+}
+.decorative-x-6 { 
+  top: 55vh; 
+  right: 35vw; 
+  animation: gameShake5 3.8s ease-in-out infinite;
+}
+.decorative-o-6 { 
+  top: 75vh; 
+  left: 42vw; 
+  animation: gameShake6 4.4s ease-in-out infinite;
+}
+.decorative-x-7 { 
+  top: 85vh; 
+  right: 45vw; 
+  animation: gameShake1 3.5s ease-in-out infinite;
+}
+.decorative-o-7 { 
+  top: 45vh; 
+  left: 52vw; 
+  animation: gameShake2 3.9s ease-in-out infinite;
+}
+.decorative-x-8 { 
+  top: 8vh; 
+  left: 58vw; 
+  animation: gameShake3 4.1s ease-in-out infinite;
+}
+.decorative-o-8 { 
+  top: 35vh; 
+  right: 52vw; 
+  animation: gameShake4 3.7s ease-in-out infinite;
+}
+.decorative-x-9 { 
+  top: 38vh; 
+  left: 68vw; 
+  animation: gameShake5 4.3s ease-in-out infinite;
+}
+.decorative-o-9 { 
+  top: 25vh; 
+  right: 65vw; 
+  animation: gameShake6 3.6s ease-in-out infinite;
+}
+.decorative-x-10 { 
+  top: 58vh; 
+  right: 75vw; 
+  animation: gameShake1 4.0s ease-in-out infinite;
+}
+.decorative-o-10 { 
+  top: 15vh; 
+  left: 75vw; 
+  animation: gameShake2 3.8s ease-in-out infinite;
+}
+
+/* Ensure decorative elements are properly positioned for Game page */
+.container .decorative-x, 
+.container .decorative-o {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.08 !important;
+  transition: none !important;
+}
+
+.container .decorative-x:hover, 
+.container .decorative-o:hover {
+  opacity: 0.08 !important;
+}
+
+/* Add decorative elements to game board screen */
+.main-card .decorative-x, .main-card .decorative-o {
+  opacity: 0.05;
+  animation: floatAndShake 6s ease-in-out infinite;
+}
+
+@keyframes floatAndShake {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) translateX(0px);
+    opacity: 0.05;
+  }
+  25% {
+    transform: translateY(-5px) rotate(1deg) translateX(-1px);
+    opacity: 0.06;
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg) translateX(1px);
+    opacity: 0.08;
+  }
+  75% {
+    transform: translateY(-5px) rotate(1deg) translateX(-0.5px);
+    opacity: 0.06;
+  }
+}
+
+/* Opponent Cards Container - Centered with equal spacing */
+.opponent-cards-container {
+  width: min(70vw, 600px);
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+}
+
+/* Opponent Cards - Equal square boxes */
+.opponent-card {
+  flex: 1;
+  max-width: 250px;
+  aspect-ratio: 1;
+}
+
+.opponent-button {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 1.5rem;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.opponent-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 20px;
+}
+
+.opponent-button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.opponent-button:hover::before {
+  opacity: 1;
+}
+
+.opponent-button.selected {
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3), 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.opponent-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.opponent-icon {
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: rgba(255, 255, 255, 0.8);
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.opponent-text {
+  flex: 1;
+  text-align: center;
+}
+
+.opponent-title {
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  font-weight: bold;
+  color: white;
+  margin-bottom: 0.3rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
+}
+
+.opponent-description {
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.3;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* AI Difficulty Slider - Same layer as opponent boxes, positioned below */
+.difficulty-slider-container {
+  width: min(70vw, 600px);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 2rem;
+  z-index: 10;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  animation: slideIn 0.3s ease-out;
+  margin: 2rem auto 0;
+}
+
+/* Difficulty Slider - Enhanced design */
+.difficulty-slider {
+  width: min(70vw, 600px);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  margin: 0 auto 2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.difficulty-slider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 20px;
+}
+
+.difficulty-slider:hover::before {
+  opacity: 1;
+}
+
+.slider-container {
+  position: relative;
+  margin: 2rem 0;
+}
+
+.slider-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.slider-progress {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.slider-progress.blue { background: #60a5fa; }
+.slider-progress.green { background: #4ade80; }
+.slider-progress.orange { background: #fb923c; }
+.slider-progress.red { background: #f87171; }
+.slider-progress.purple { background: #a78bfa; }
+
+.slider-input {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  margin: 0;
+  transform: translateY(-50%);
+}
+
+.difficulty-display {
+  text-align: center;
+}
+
+.difficulty-label {
+  color: white;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.difficulty-name {
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  font-weight: bold;
+  margin-left: 0.5rem;
+}
+
+.difficulty-name.blue { color: #60a5fa; }
+.difficulty-name.green { color: #4ade80; }
+.difficulty-name.orange { color: #fb923c; }
+.difficulty-name.red { color: #f87171; }
+.difficulty-name.purple { color: #a78bfa; }
+
+.difficulty-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.label {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+  transition: all 0.3s ease;
+}
+
+.label.active {
+  color: white;
+  font-weight: bold;
+}
+
+/* Slider Thumb Styles */
+.slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.slider-input::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.slider-input::-webkit-slider-thumb:hover,
+.slider-input::-moz-range-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.slider-input::-webkit-slider-thumb:active,
+.slider-input::-moz-range-thumb:active {
+  transform: scale(0.95);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+/* Action Buttons - More compact */
+/* Action Buttons - Fixed positioning and styling */
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 1.5rem;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.back-button {
+  all: unset;
+  font-family: 'Annie Use Your Telescope', sans-serif;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  color: white;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 600;
+  padding: 1rem 2rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.back-button:active {
+  transform: translateY(0);
+}
+
+.start-button {
+  all: unset;
+  font-family: 'Annie Use Your Telescope', sans-serif;
+  background: rgba(128, 128, 128, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 600;
+  padding: 1rem 2rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: not-allowed;
+}
+
+.start-button:not(.disabled) {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(34, 197, 94, 0.3);
+}
+
+.start-button:not(.disabled):hover {
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.4);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.start-button.disabled {
+  background: rgba(128, 128, 128, 0.3);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: not-allowed;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.start-button:active:not(.disabled) {
+  transform: translateY(0);
+}
+/* Game Board Styles */
+.game-board-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  z-index: 1;
+  margin-bottom: 2rem;
+}
+
+/* Integrated Game Info - Above the board */
+.game-info-integrated {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.game-info-integrated .status-message {
+  color: white;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 500;
+  font-family: 'Annie Use Your Telescope', cursive;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  margin: 0 0 0.5rem 0;
+}
+
+.game-info-integrated .ai-difficulty {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+  font-family: 'Annie Use Your Telescope', cursive;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  margin-bottom: 3rem;
+}
+
+/* Game board glow effects */
+.game-board-container.glow-red .game-board {
+  box-shadow: 0 0 30px rgba(239, 68, 68, 0.6);
+}
+
+.game-board-container.glow-blue .game-board {
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+}
+
+.game-board-container.glow-green .game-board {
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.8);
+}
+
+.game-board {
+  width: 360px;
+  height: 360px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 12px;
+  padding: 12px;
+  margin: 0 auto;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.cell {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: white;
+  font-size: clamp(3rem, 8vw, 4.5rem);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+  line-height: 1;
+  aspect-ratio: 1;
+  min-height: 80px;
+  min-width: 80px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.cell:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.cell:disabled {
+  cursor: not-allowed;
+}
+
+.cell.winning {
+  background: rgba(34, 197, 94, 0.3);
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.8);
+  animation: pulse 1s infinite;
+}
+
+.cell .x {
+  color: #22d3ee;
+}
+
+.cell .o {
+  color: #f472b6;
+}
+
+/* Processing move animation */
+.cell.processing {
+  background: rgba(255, 255, 255, 0.1);
+  animation: processMove 0.3s ease-in-out;
+}
+
+@keyframes processMove {
+  0% {
+    transform: scale(1);
+    background: rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    transform: scale(0.95);
+    background: rgba(255, 255, 255, 0.2);
+  }
+  100% {
+    transform: scale(1);
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.thinking-indicator {
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+/* Base button style */
+.btn {
+  all: unset;
+  font-family: 'Annie Use Your Telescope', cursive;
+  font-size: clamp(0.9rem, 2vw, 1.125rem);
+  font-weight: 600;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+/* Floating Back Button (bottom-left) */
+.btn-back {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 1000;
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.btn-back:active {
+  transform: translateY(0);
+}
+
+/* Floating Next Button (bottom-right) */
+.btn-next {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.btn-next:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.btn-next:active {
+  transform: translateY(0);
+}
+
+.btn-next.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Reset button (in-game) */
+.btn-reset {
+  background: #dc2626;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1.125rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-reset:hover {
+  background: #b91c1c;
+}
+
+/* New Game button (in-game) */
+.btn-new {
+  background: #16a34a;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-new:hover {
+  background: #15803d;
+}
+
+
+/* AI Thinking Indicator */
+/* .cell.ai-thinking {
+  background: rgba(255, 255, 255, 0.1);
+  cursor: wait;
+} */
+
+/* .thinking-indicator {
+  position: absolute;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+} */
+
+/* Game Over Overlay */
+.game-over-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.game-over-content {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1.5rem;
+  padding: 3rem;
+  text-align: center;
+  max-width: 28rem;
+  width: 90vw;
+  animation: slideIn 0.5s ease-out;
+  position: relative;
+  z-index: 10000;
+}
+
+.game-over-message {
+  color: white;
+  font-size: clamp(2rem, 6vw, 2.5rem);
+  font-weight: bold;
+  font-family: 'Annie Use Your Telescope', cursive;
+  margin-bottom: 1rem;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.game-over-emoji {
+  font-size: clamp(3rem, 7vw, 4.5rem);
+  margin-bottom: 1.5rem;
+}
+
+.game-over-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: clamp(1.1rem, 2.8vw, 1.4rem);
+  margin-bottom: 2rem;
+}
+
+.game-over-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-play-again {
+  background: #16a34a;
+  border: none;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-play-again:hover {
+  background: #15803d;
+}
+
+.btn-results {
+  background: #dc2626;
+  border: none;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-results:hover {
+  background: #b91c1c;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { 
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Setup Buttons Container */
+.setup-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: min(70vw, 600px);
+  margin: 2rem auto;
+  padding: 0 1rem;
+  z-index: 10;
+}
+
+/* Selection Sections - All in same layer */
+.selection-section {
+  width: 100%;
+  margin: 2rem 0;
+  z-index: 10;
+}
+
+.section-title {
+  font-family: 'Annie Use Your Telescope', Helvetica;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  color: white;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Option Cards Container - Unified for game modes and opponents */
+.option-cards-container {
+  width: min(70vw, 600px);
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+/* Option Cards - Equal square boxes */
+.option-card {
+  flex: 1;
+  max-width: 250px;
+  aspect-ratio: 1;
+}
+
+.option-button {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 1.5rem;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.option-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 20px;
+}
+
+.option-button:hover::before {
+  opacity: 1;
+}
+
+.option-button:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.option-button.selected {
+  border-color: #60a5fa;
+  background: rgba(96, 165, 250, 0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(96, 165, 250, 0.3);
+}
+
+.option-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  gap: 0.8rem;
+  padding: 1rem;
+}
+
+.option-icon {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 0.3rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.option-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.option-title {
+  font-family: 'Annie Use Your Telescope', Helvetica;
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  margin: 0;
+  opacity: 0.95;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.option-description {
+  font-family: 'Annie Use Your Telescope', Helvetica;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  opacity: 0.8;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Game Mode Display */
+.game-mode-display {
+  text-align: center;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+}
+
+.selected-mode {
+  color: #60a5fa;
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Coming Soon Modal Styles */
+.overlay-content {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1.5rem;
+  padding: 3rem;
+  text-align: center;
+  max-width: 28rem;
+  width: 90vw;
+  animation: slideIn 0.5s ease-out;
+  position: relative;
+  z-index: 10000;
+}
+
+.overlay-title {
+  color: white;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: bold;
+  font-family: 'Annie Use Your Telescope', cursive;
+  margin-bottom: 1rem;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.overlay-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+/* Animation for modal */
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-2rem) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsive design for game board */
+@media (max-width: 1200px) {
+  .opponent-cards-container {
+    width: min(80vw, 500px);
+    gap: 25px;
+  }
+  
+  .opponent-card {
+    max-width: 200px;
+  }
+  
+  .opponent-button {
+    padding: 1rem;
+  }
+  
+  .opponent-icon {
+    font-size: clamp(1.8rem, 4vw, 2.2rem);
+  }
+  
+  .opponent-title {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+  }
+  
+  .opponent-description {
+    font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+  }
+  
+  .difficulty-slider-container {
+    width: min(80vw, 500px);
+  }
+}
+
+/* Replace this section in your CSS around line 800+ */
+@media (max-width: 768px) {
+  .main-title {
+    font-size: clamp(2.5rem, 7vw, 3.5rem);
+    margin-bottom: 2rem;
+  }
+  
+  .game-board {
+    width: 300px;
+    height: 300px;
+    gap: 8px;
+    padding: 8px;
+  }
+  
+  .cell {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    border-radius: 8px;
+    min-height: 60px;
+    min-width: 60px;
+  }
+  
+  .opponent-cards-container {
+    flex-direction: column;
+    gap: 20px;
+    width: min(80vw, 300px);
+    margin: 1.5rem auto;
+  }
+  
+  .opponent-card {
+    max-width: 100%;
+    aspect-ratio: 2.5;
+  }
+  
+  .opponent-button {
+    aspect-ratio: 2.5;
+  }
+  
+  .opponent-content {
+    flex-direction: row;
+    gap: 1rem;
+    text-align: left;
+  }
+  
+  .opponent-text {
+    text-align: left;
+  }
+  
+  .difficulty-slider-container {
+    width: min(80vw, 300px);
+    padding: 1.5rem;
+    margin: 1.5rem auto;
+  }
+  
+  .game-info-integrated {
+    padding: 10px 20px;
+  }
+  
+  .game-info-integrated .status-message {
+    font-size: clamp(1.3rem, 3.5vw, 1.6rem) !important;
+  }
+  
+  .game-info-integrated .ai-difficulty {
+    font-size: clamp(0.9rem, 2.2vw, 1.1rem) !important;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 2rem;
+  }
+  
+  .btn {
+    min-width: 120px;
+    font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+  }
+  
+  /* KEEP BUTTONS FIXED TO SIDES - Remove the centering override */
+  .back-button, .start-button {
+    font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+    padding: 0.8rem 1.5rem; /* Adjust padding for mobile */
+  }
+  
+  .game-over-content {
+    padding: 2rem;
+  }
+  
+  .game-over-message {
+    font-size: clamp(1.8rem, 5vw, 2.2rem);
+  }
+  
+  .game-over-buttons {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-title {
+    font-size: clamp(2rem, 6vw, 2.8rem);
+    margin-bottom: 1.5rem;
+  }
+  
+  .game-board {
+    width: 280px;
+    height: 280px;
+    gap: 6px;
+    padding: 6px;
+  }
+  
+  .cell {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    border-radius: 6px;
+    min-height: 50px;
+    min-width: 50px;
+  }
+  
+  .opponent-cards-container {
+    width: min(90vw, 280px);
+    margin-bottom: 1.5rem;
+  }
+  
+  .difficulty-slider-container {
+    width: min(90vw, 280px);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .game-over-buttons {
+    flex-direction: column;
+  }
+}
+
+/* Selection Section */
+.selection-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.option-cards-container {
+  width: min(70vw, 600px);
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
