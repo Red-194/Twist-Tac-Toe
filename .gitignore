@@ -30,6 +30,7 @@ junit*.xml
 .svelte-kit/    # If using SvelteKit
 build/
 node_modules
+dist
 
 # System Files
 Thumbs.db

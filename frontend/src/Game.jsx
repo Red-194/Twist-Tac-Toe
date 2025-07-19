@@ -198,8 +198,7 @@ export default function Game() {
 
   // API calls to FastAPI backend
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-  //const API_BASE_URL = 'http://localhost:3000';
-
+  
   const startNewGame = async () => {
   try {
     const controller = new AbortController();
