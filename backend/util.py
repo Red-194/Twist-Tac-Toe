@@ -45,21 +45,20 @@ def best_move( board: List[str], ai_symbol: str, depth: int, turn: bool) -> int:
     
     best_score = -float('inf')
     best_move = -1
+    moves = available_moves(board)
     
     if check_winner(board) == "X" or check_winner(board)=="O":
         return best_move
     
     if depth < 3:
         if random.random() < 0.7:
-            return random.choice(available_moves(board))
-
+            return random.choice(moves)
     
-    for i in available_moves(board):
+    for i in moves:
         board[i] = ai_symbol        
         score = minimax(board, ai_symbol, depth-1, not turn)
-        
         noise = random.uniform(-5 + depth, 0)
-        score += noise        
+        score += noise 
         
         board[i] = ""
         if score > best_score:

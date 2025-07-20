@@ -27,9 +27,10 @@ def new_game(req: NewGameRequest):
     player_symbol = random.choice(["X", "O"])
     move_history = []
     ai_move = None
-
+    
+    depth = req.depth if req.depth is not None else 0
+    
     if req.ai_mode and player_symbol == "O":
-        depth = req.depth if req.depth is not None else 5
         ai_move = best_move(board, "X", depth, turn=True)
         if ai_move is not None and ai_move != -1:
             board[ai_move] = "X"
@@ -38,13 +39,15 @@ def new_game(req: NewGameRequest):
     result = check_winner(board) or "in_progress"
     your_turn = True
 
+    depth = min(depth, len(available_moves(board)))
+    
     return NewGameResponse(
         player_symbol=player_symbol,
         your_turn=your_turn,
         board=board,
         ai_move=ai_move,
         result=result,
-        depth=req.depth or 5,
+        depth=depth,
         ai_enabled=req.ai_mode,
         mode=req.mode,
         move_history=move_history if req.mode == "decay" else [],
@@ -52,10 +55,9 @@ def new_game(req: NewGameRequest):
 
 @app.post("/make_move", response_model=NewGameResponse)
 def make_move(req: MoveRequest):
-    board = req.board[:]  # Create a copy to avoid modifying the original
+    board = req.board[:]
 
     if board[req.player_move] != "":
-        # Return unchanged game state
         return NewGameResponse(
             player_symbol=req.player_symbol,
             your_turn=True,
@@ -99,6 +101,8 @@ def make_move(req: MoveRequest):
     if result is None:
         result = "in_progress"
 
+    req.depth = min(req.depth, len(available_moves(board)))
+    
     return NewGameResponse(
         player_symbol=req.player_symbol,
         your_turn=(result == "in_progress"),
