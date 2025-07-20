@@ -1,4 +1,3 @@
-<img width="1352" height="768" alt="image" src="https://github.com/user-attachments/assets/5628241d-d55a-4657-9606-ff308e77f6f1" /># Twist-Tac-Toe
 # ✨ Twist Tac Toe
 
 _Twist Tac Toe_ is a spicy remix of the classic Tic Tac Toe — with added chaos. It features **"Decay Mode"**, AI of varying IQs, multiple game modes, and endless possibilities. No more boring draws. Just straight-up strategy and savage moves.
