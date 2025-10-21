@@ -11,7 +11,7 @@ FRONTEND_URL = os.environ["FRONTEND_URL"]
 
 app = FastAPI()
 
-origins = [FRONTEND_URL, "http://localhost", "http://localhost:5000"]
+origins = [FRONTEND_URL, 'https://tic-tac-toe-umber-ten.vercel.app', "http://localhost", "http://localhost:5000"]
 
 app.add_middleware(
     CORSMiddleware,
