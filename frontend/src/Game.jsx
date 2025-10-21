@@ -24,16 +24,16 @@ export default function Game() {
   const [isAiTurn, setIsAiTurn] = useState(false);
   const [moveHistory, setMoveHistory] = useState([]);
   const [isProcessingMove, setIsProcessingMove] = useState(false);
-
+  const [actualDepth, setActualDepth] = useState(null)
+  
   const getDepthFromDifficulty = (difficulty) => {
   const depthMapping = [0, 1, 3, 5, 7, 9]; // index 0 unused, positions 1-5 map to depths
-  return depthMapping[difficulty];
+    return depthMapping[difficulty];
   };
 
   const difficultyNames = ['', 'Very Easy', 'Easy', 'Medium', 'Hard', 'Expert'];
   const difficultyColors = ['', 'blue', 'green', 'orange', 'red', 'purple'];
 
-  // Local game logic for friend play (using same logic as backend util.py)
   const checkLocalWinner = (board) => {
     const winConditions = [
       [0, 1, 2], [3, 4, 5], [6, 7, 8],  // rows
@@ -47,11 +47,9 @@ export default function Game() {
         return board[a];
       }
     }
-    
     if (!board.includes('')) {
       return 'draw';
     }
-    
     return null;
   };
 
@@ -59,7 +57,6 @@ export default function Game() {
     const newBoard = [...board];
     const newMoveHistory = [...moveHistory];
     
-    // Make the move
     newBoard[index] = currentPlayer;
     newMoveHistory.push(index);
     
@@ -98,10 +95,6 @@ export default function Game() {
 
   const selectOpponent = (opponent) => {
     setSelectedOpponent(opponent);
-  };
-
-  const updateDifficulty = (value) => {
-    setCurrentDifficulty(parseInt(value));
   };
 
   const startGame = () => {
@@ -198,8 +191,7 @@ export default function Game() {
 
   // API calls to FastAPI backend
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-  //const API_BASE_URL = 'http://localhost:3000';
-
+  
   const startNewGame = async () => {
   try {
     const controller = new AbortController();
@@ -225,12 +217,16 @@ export default function Game() {
     }
 
     const gameData = await response.json();
+    if (gameData.depth !== undefined) {
+      setActualDepth(gameData.depth)
+    }
+
     setBoard(gameData.board);
     setCurrentPlayer(gameData.player_symbol);
     setPlayerSymbol(gameData.player_symbol);
     setMoveHistory(gameData.move_history || []);
 
-    if (gameData.result === 'in progress' || gameData.result === 'in_progress') {
+    if (gameData.result === 'in_progress') {
       setGameStatus('playing');
     } else {
       // Add delay before showing result modal for API games
@@ -265,6 +261,8 @@ export default function Game() {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 10000);
 
+    console.log('Sending player move with depth:', actualDepth);
+
     const response = await fetch(`${API_BASE_URL}/make_move`, {
       method: 'POST',
       headers: {
@@ -275,7 +273,7 @@ export default function Game() {
         player_move: index,
         player_symbol: currentPlayer,
         ai_enabled: selectedOpponent === 'ai',
-        depth: getDepthFromDifficulty(currentDifficulty),
+        depth: actualDepth,
         mode: mode,
         move_history: moveHistory
       }),
@@ -289,21 +287,26 @@ export default function Game() {
     }
 
     const gameData = await response.json();
+
+    if (gameData.depth !== undefined) {
+      setActualDepth(gameData.depth);
+    }
+
     setBoard(gameData.board);
     setMoveHistory(gameData.move_history || []);
 
-    if (gameData.result === 'in progress' || gameData.result === 'in_progress') {
+    if (gameData.result === 'in_progress') {
       setGameStatus('playing');
       setIsAiTurn(!gameData.your_turn);
     } else {
       // Add delay before showing result modal for API moves
       setTimeout(() => {
         if (gameData.result === 'draw') {
-          setGameStatus('draw');
           setWinner('draw');
+          setGameStatus('draw');
         } else {
-          setGameStatus('won');
           setWinner(gameData.result);
+          setGameStatus('won');
         }
         setIsAiTurn(false);
       }, 1000); // 1 second delay to see the final move
